@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feathered — A Field Companion for Bird Lovers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#243026;
+  --moss:#3f6b4c;
+  --moss-deep:#2c4c37;
+  --sky:#7fb0c4;
+  --sand:#f4efe4;
+  --cream:#fbf8f1;
+  --clay:#c67b4a;
+  --line:#e2dccd;
+  --shadow:0 12px 34px rgba(44,76,55,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Nunito Sans',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.65;
+}
+h1,h2,h3,.serif{font-family:'Fraunces',serif;line-height:1.15}
+a{color:var(--moss-deep)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* Header */
+header.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(251,248,241,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 22px;max-width:1120px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces';font-weight:900;font-size:1.35rem;color:var(--moss-deep)}
+.brand span{font-size:1.5rem}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{
+  text-decoration:none;color:var(--ink);font-weight:700;font-size:.92rem;
+  padding:8px 12px;border-radius:999px;transition:.2s;
+}
+.nav-links a:hover{background:var(--sand)}
+@media(max-width:640px){.nav-links{display:none}}
+
+/* Hero */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#3f6b4c 0%,#2c4c37 55%,#213a2b 100%);
+  color:var(--cream);padding:78px 0 90px;
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+@media(max-width:820px){.hero-grid{grid-template-columns:1fr;text-align:center}}
+.hero h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:900;margin-bottom:18px}
+.hero h1 em{color:#f2c98a;font-style:italic}
+.hero p{font-size:1.12rem;max-width:46ch;opacity:.94;margin-bottom:26px}
+@media(max-width:820px){.hero p{margin-left:auto;margin-right:auto}}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:820px){.hero-cta{justify-content:center}}
+.btn{
+  display:inline-block;border:none;cursor:pointer;font-family:'Nunito Sans';
+  font-weight:700;font-size:1rem;padding:13px 22px;border-radius:999px;
+  text-decoration:none;transition:.2s;min-height:44px;
+}
+.btn-primary{background:#f2c98a;color:#2c4c37}
+.btn-primary:hover{background:#f6d9a6;transform:translateY(-2px)}
+.btn-ghost{background:rgba(255,255,255,.12);color:var(--cream);border:1px solid rgba(255,255,255,.4)}
+.btn-ghost:hover{background:rgba(255,255,255,.22)}
+
+/* Hero art */
+.sky-scene{
+  position:relative;height:280px;border-radius:24px;overflow:hidden;
+  background:linear-gradient(180deg,#a9d1de 0%,#cfe6d0 100%);
+  box-shadow:var(--shadow);
+}
+.sun{position:absolute;top:26px;right:34px;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle,#fff3d0,#f6d9a6);box-shadow:0 0 40px #f6d9a6}
+.hill{position:absolute;bottom:0;width:150%;left:-25%;height:120px;background:#6c9b6f;border-radius:50% 50% 0 0}
+.hill.two{bottom:0;height:80px;background:#4f7d55;border-radius:50% 50% 0 0;left:-10%;width:130%}
+.bird-fly{position:absolute;font-size:1.4rem;animation:glide 9s linear infinite}
+.bird-fly.b1{top:60px;animation-duration:11s}
+.bird-fly.b2{top:100px;animation-delay:-4s;animation-duration:14s;font-size:1.1rem}
+.bird-fly.b3{top:40px;animation-delay:-7s;animation-duration:13s}
+@keyframes glide{0%{left:-10%;transform:translateY(0)}50%{transform:translateY(-18px)}100%{left:110%;transform:translateY(0)}}
+
+/* Sections */
+section.pad{padding:70px 0}
+.eyebrow{color:var(--clay);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem}
+.sec-head h2{font-size:clamp(1.8rem,4vw,2.6rem);margin:8px 0 10px}
+.sec-head p{max-width:60ch;color:#4f5a51}
+.center{text-align:center}
+.center p{margin-left:auto;margin-right:auto}
+
+/* Controls */
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:28px 0 26px;justify-content:center}
+.search{flex:1;min-width:220px;max-width:360px;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 8px 4px 16px}
+.search input{border:none;outline:none;font-family:inherit;font-size:1rem;padding:9px 0;width:100%;background:transparent}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.chip{
+  border:1px solid var(--line);background:#fff;color:var(--ink);
+  padding:9px 16px;border-radius:999px;cursor:pointer;font-weight:700;font-size:.9rem;transition:.2s;min-height:40px;
+}
+.chip:hover{border-color:var(--moss)}
+.chip.active{background:var(--moss);color:#fff;border-color:var(--moss)}
+
+/* Bird grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  box-shadow:0 6px 18px rgba(44,76,55,.06);transition:.25s;cursor:pointer;
+  display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.card-top{height:118px;display:flex;align-items:center;justify-content:center;font-size:3.4rem;position:relative}
+.tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.85);color:var(--moss-deep);font-weight:700;font-size:.72rem;padding:4px 10px;border-radius:999px}
+.card-body{padding:16px 18px 20px}
+.card-body h3{font-size:1.28rem}
+.sci{font-style:italic;color:#8a9188;font-size:.86rem;margin-bottom:8px}
+.card-body p{font-size:.94rem;color:#4f5a51}
+.fav-star{background:none;border:none;cursor:pointer;font-size:1.3rem;position:absolute;top:8px;right:10px;color:#fff;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3));min-width:44px;min-height:44px}
+.empty{text-align:center;color:#8a9188;padding:40px;grid-column:1/-1}
+
+/* Modal */
+.modal-bg{position:fixed;inset:0;background:rgba(30,44,34,.55);display:none;align-items:center;justify-content:center;z-index:100;padding:18px}
+.modal-bg.show{display:flex}
+.modal{background:var(--cream);border-radius:22px;max-width:520px;width:100%;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
+.modal-head{padding:30px 28px;background:linear-gradient(160deg,#3f6b4c,#2c4c37);color:var(--cream);position:relative}
+.modal-head .big{font-size:4rem}
+.modal-head h2{margin:6px 0 2px}
+.modal-head .sci{color:#cfe6d0}
+.close-x{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.2);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.modal-body{padding:24px 28px 30px}
+.fact-row{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.fact-row:last-child{border:none}
+.fact-row .k{font-weight:700;min-width:110px;color:var(--moss-deep)}
+.modal-body .story{margin:16px 0}
+
+/* Weather */
+.tool{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:0 6px 18px rgba(44,76,55,.06)}
+.tool-row{display:flex;gap:10px;flex-wrap:wrap}
+.tool input,.tool select,.tool textarea{
+  font-family:inherit;font-size:1rem;padding:12px 14px;border:1px solid var(--line);
+  border-radius:12px;background:var(--cream);outline:none;width:100%;
+}
+.tool label{font-weight:700;font-size:.9rem;display:block;margin:12px 0 6px}
+.weather-out{margin-top:22px;display:none}
+.weather-out.show{display:block}
+.wcard{display:flex;align-items:center;gap:18px;background:linear-gradient(160deg,#eef6ef,#e2eef0);border-radius:18px;padding:20px}
+.wcard .wemoji{font-size:3rem}
+.wtemp{font-family:'Fraunces';font-size:2.2rem;font-weight:900;color:var(--moss-deep)}
+.advice{margin-top:16px;padding:14px 16px;border-radius:12px;background:var(--sand);font-weight:600}
+.status{font-size:.9rem;color:#8a9188;margin-top:10px}
+
+/* Two column tools */
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media(max-width:820px){.tool-grid{grid-template-columns:1fr}}
+
+/* Journal */
+.saveind{font-size:.85rem;color:var(--moss);font-weight:700;opacity:0;transition:.3s;height:1em}
+.saveind.show{opacity:1}
+.log-list{margin-top:24px;display:flex;flex-direction:column;gap:12px}
+.log{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.log h4{font-family:'Fraunces';font-size:1.1rem}
+.log .meta{font-size:.85rem;color:#8a9188}
+.log .note{font-size:.92rem;margin-top:4px;color:#4f5a51}
+.del{background:none;border:none;color:#b06a4a;cursor:pointer;font-weight:700;font-size:.85rem;min-height:36px}
+
+/* Facts strip */
+.facts{background:var(--moss-deep);color:var(--cream)}
+.facts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;text-align:center}
+@media(max-width:720px){.facts-grid{grid-template-columns:repeat(2,1fr)}}
+.facts-grid .n{font-family:'Fraunces';font-size:2.4rem;font-weight:900;color:#f2c98a}
+.facts-grid .l{opacity:.9;font-size:.92rem}
+
+/* How it works */
+.how{background:var(--sand)}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
+@media(max-width:720px){.how-grid{grid-template-columns:1fr}}
+.how-card{background:#fff;border-radius:16px;padding:22px;border:1px solid var(--line)}
+.how-card .num{width:34px;height:34px;border-radius:50%;background:var(--moss);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:12px}
+
+footer{background:var(--moss-deep);color:#cfe6d0;text-align:center;padding:40px 22px;font-size:.9rem}
+footer .brand{justify-content:center;color:#f2c98a;margin-bottom:8px}
+</style>
+<script id="factory-store-sdk">
+window.factory=(function(){
+var K="7410b42d-5585-4e56-94ce-69c990fd694e",U="https://canvbkibjgcnqowjtarf.supabase.co/functions/v1/app-market",A="sb_publishable_sMTQKIeFgT1vwjHnU7Gexg_8CCmhtxs";
+function call(b){b.appKey=K;return fetch(U,{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+A},body:JSON.stringify(b)}).then(function(r){return r.json().then(function(d){if(!r.ok)throw new Error(d.error||("store "+r.status));return d;});});}
+var S={
+put:function(c,i,d){return call({op:"put",collection:c,id:String(i),data:d}).then(function(x){return x.doc?x.doc.data:null;});},
+get:function(c,i){return call({op:"get",collection:c,id:String(i)}).then(function(x){return x.doc?x.doc.data:null;});},
+list:function(c){return call({op:"list",collection:c}).then(function(x){return x.docs.map(function(d){return d.data;});});},
+remove:function(c,i){return call({op:"delete",collection:c,id:String(i)}).then(function(){return true;});},
+unlock:function(code){return call({op:"redeem",code:String(code)}).then(function(x){try{localStorage.setItem("factory_access",x.status);}catch(e){}return x.status;});},
+access:function(){try{return localStorage.getItem("factory_access")||"none";}catch(e){return "none";}}
+};
+var _c=null;try{var h=(location.hash||"").match(/factory_code=([a-z0-9-]+)/i);_c=h?h[1]:localStorage.getItem("factory_code");if(h){history.replaceState(null,"",location.pathname+location.search);}}catch(e){}
+var F={put:S.put,get:S.get,list:S.list,remove:S.remove,unlock:S.unlock,access:S.access};
+F.ready=_c?S.unlock(_c).then(function(s){try{if(s!=="invalid")localStorage.setItem("factory_code",_c);}catch(e){}return s;}).catch(function(){return S.access();}):Promise.resolve(S.access());
+return F;})();
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand"><span>🪶</span>Feathered</div>
+    <nav class="nav-links">
+      <a href="#directory">Bird Directory</a>
+      <a href="#weather">Birding Weather</a>
+      <a href="#journal">Sighting Journal</a>
+      <a href="#how">How it works</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow" style="color:#f2c98a">A gentle field companion</p>
+      <h1>The world is <em>singing</em> — come and listen.</h1>
+      <p>Feathered is a warm little home for anyone who loves birds, from the sparrow on the windowsill to the falcon on the cliff. Learn who's who, check the sky before you head out, and keep a journal of every visitor you meet.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#directory">Meet the birds</a>
+        <a class="btn btn-ghost" href="#journal">Log a sighting</a>
+      </div>
+    </div>
+    <div class="sky-scene" aria-hidden="true">
+      <div class="sun"></div>
+      <div class="bird-fly b1">🕊️</div>
+      <div class="bird-fly b2">🐦</div>
+      <div class="bird-fly b3">🦅</div>
+      <div class="hill"></div>
+      <div class="hill two"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FACTS STRIP -->
+<section class="facts pad" style="padding:44px 0">
+  <div class="wrap facts-grid">
+    <div><div class="n">~11,000</div><div class="l">bird species alive today</div></div>
+    <div><div class="n">10,000km</div><div class="l">the Arctic tern's yearly migration</div></div>
+    <div><div class="n">400+</div><div class="l">songs a nightingale can learn</div></div>
+    <div><div class="n">150M yrs</div><div class="l">since birds first took to the sky</div></div>
+  </div>
+</section>
+
+<!-- DIRECTORY -->
+<section class="pad" id="directory">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow">Get to know them</p>
+      <h2>The Bird Directory</h2>
+      <p>A friendly gallery of familiar birds. Search by name, filter by where they live, and tap any card for the full story. Star your favourites — they're saved to this shared field notebook for everyone.</p>
+    </div>
+
+    <div class="controls">
+      <label class="search">
+        <span aria-hidden="true">🔍</span>
+        <input type="text" id="search" placeholder="Search by name…" aria-label="Search birds by name">
+      </label>
+    </div>
+    <div class="chips" id="filters" role="group" aria-label="Filter by habitat">
+      <button class="chip active" data-f="all">All birds</button>
+      <button class="chip" data-f="Garden">Garden</button>
+      <button class="chip" data-f="Woodland">Woodland</button>
+      <button class="chip" data-f="Water">Water & wetland</button>
+      <button class="chip" data-f="Raptor">Birds of prey</button>
+      <button class="chip" data-f="fav">★ Favourites</button>
+    </div>
+
+    <div class="grid" id="grid" style="margin-top:30px"></div>
+  </div>
+</section>
+
+<!-- WEATHER + JOURNAL -->
+<section class="pad how" id="weather">
+  <div class="wrap">
+    <div class="tool-grid">
+      <!-- Weather -->
+      <div class="tool">
+        <p class="eyebrow">Before you head out</p>
+        <h2 style="font-size:1.7rem;margin:6px 0 10px">Birding Weather</h2>
+        <p style="color:#4f5a51;font-size:.95rem">Birds are busiest in calm, mild weather. Enter a town or postcode to check the sky and get a quick birdwatching outlook.</p>
+        <label for="place">Where are you birding?</label>
+        <div class="tool-row">
+          <input type="text" id="place" placeholder="e.g. Cambridge or SW1A 1AA">
+          <button class="btn btn-primary" id="wbtn" style="white-space:nowrap">Check</button>
+        </div>
+        <div class="status" id="wstatus"></div>
+        <div class="weather-out" id="wout">
+          <div class="wcard">
+            <div class="wemoji" id="wemoji">🌤️</div>
+            <div>
+              <div class="wtemp" id="wtemp">—</div>
+              <div id="wplace" style="font-weight:700"></div>
+              <div id="wwind" style="font-size:.9rem;color:#4f5a51"></div>
+            </div>
+          </div>
+          <div class="advice" id="wadvice"></div>
+        </div>
+      </div>
+
+      <!-- Journal -->
+      <div class="tool" id="journal">
+        <p class="eyebrow">Keep a record</p>
+        <h2 style="font-size:1.7rem;margin:6px 0 10px">Sighting Journal</h2>
+        <p style="color:#4f5a51;font-size:.95rem">Note down who you spotted, where, and anything special. Entries are saved to the shared community notebook.</p>
+        <label for="jbird">Bird spotted</label>
+        <input type="text" id="jbird" placeholder="e.g. European Robin">
+        <label for="jloc">Where</label>
+        <input type="text" id="jloc" placeholder="e.g. back garden, oak tree">
+        <label for="jnote">Notes (optional)</label>
+        <textarea id="jnote" rows="2" placeholder="Singing at dawn, quite bold…"></textarea>
+        <div style="display:flex;align-items:center;gap:14px;margin-top:14px">
+          <button class="btn btn-primary" id="jbtn">Add to journal</button>
+          <span class="saveind" id="saveind">Saved ✓</span>
+        </div>
+        <div class="log-list" id="loglist"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="pad" id="how">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow">The nuts and bolts</p>
+      <h2>How it works</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="num">1</div>
+        <h3 class="serif" style="font-size:1.2rem">Browse & learn</h3>
+        <p style="color:#4f5a51;font-size:.95rem">The directory holds hand-written profiles of familiar birds. Search and filter run instantly in your browser. Tap a card for the full story, and use the ★ to save favourites.</p>
+      </div>
+      <div class="how-card">
+        <div class="num">2</div>
+        <h3 class="serif" style="font-size:1.2rem">Check the sky</h3>
+        <p style="color:#4f5a51;font-size:.95rem">The weather tool looks up your location through The Factory's places service, then fetches a live current-conditions reading from the free Open-Meteo service to give a real birding outlook.</p>
+      </div>
+      <div class="how-card">
+        <div class="num">3</div>
+        <h3 class="serif" style="font-size:1.2rem">It remembers</h3>
+        <p style="color:#4f5a51;font-size:.95rem">Favourites and journal entries are stored permanently in this app's own cloud notebook, shared by everyone who visits — so the record grows together over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand"><span>🪶</span>Feathered</div>
+  <p>Made with love for birds and the people who watch them.</p>
+  <p style="margin-top:8px;opacity:.7">Weather data © Open-Meteo · Location lookup via The Factory places service.</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="mName">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="close-x" id="closeM" aria-label="Close">✕</button>
+      <div class="big" id="mEmoji">🐦</div>
+      <h2 id="mName">Bird</h2>
+      <div class="sci" id="mSci"></div>
+    </div>
+    <div class="modal-body">
+      <p class="story" id="mStory"></p>
+      <div id="mFacts"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const BIRDS = [
+  {id:'robin-eu', name:'European Robin', sci:'Erithacus rubecula', emoji:'🐦', habitat:'Garden',
+    size:'12–14 cm', diet:'Insects, worms, berries', song:'A wistful, warbling melody, sung even in winter',
+    story:"Round, red-breasted and fearless, the European Robin is a gardener's constant companion — happy to hop within arm's reach while you turn the soil. Both males and females hold territory year-round and sing through the coldest months, which is why the robin became the beloved emblem of winter. Behind the cheerful face is a fierce little defender that will battle rivals over a favourite patch."},
+  {id:'robin-am', name:'American Robin', sci:'Turdus migratorius', emoji:'🐦', habitat:'Garden',
+    size:'23–28 cm', diet:'Earthworms, insects, fruit', song:'A rich, rolling "cheerily, cheer-up" phrase',
+    story:"Larger than its European namesake and actually a thrush, the American Robin is one of the first voices of spring across North America. You'll see it tilting its head on the lawn, listening for worms below. Its cup nest of grass and mud often holds the famous sky-blue eggs — a colour so distinctive it has a paint shade named after it."},
+  {id:'kingfisher', name:'Common Kingfisher', sci:'Alcedo atthis', emoji:'🐦', habitat:'Water',
+    size:'16–17 cm', diet:'Small fish, aquatic insects', song:'A shrill, whistling "zeee" as it flashes past',
+    story:"A living jewel of electric blue and burnt orange, the kingfisher is more often glimpsed as a streak of colour skimming the river than seen at rest. It perches over clear water, then dives like a dart to seize a fish, beating its catch against a branch before swallowing it head-first. A pair may excavate a metre-long tunnel in a riverbank to raise their young."},
+  {id:'heron', name:'Grey Heron', sci:'Ardea cinerea', emoji:'🦢', habitat:'Water',
+    size:'84–102 cm', diet:'Fish, amphibians, small mammals', song:'A harsh, croaking "fraank" in flight',
+    story:"Patient as a statue, the grey heron stands motionless at the water's edge for long minutes before its neck uncoils in a lightning strike. Tall and elegant with a dagger bill, it hunts ponds, rivers and even garden fishponds. In flight it folds its neck into an S-shape, unlike storks, and its slow, deep wingbeats give it an unmistakable prehistoric grace."},
+  {id:'swan', name:'Mute Swan', sci:'Cygnus olor', emoji:'🦢', habitat:'Water',
+    size:'140–160 cm', diet:'Water plants, grasses', song:'Mostly silent, but hisses and snorts when defensive',
+    story:"Serene on the water yet surprisingly powerful, the mute swan glides with an orange bill and a graceful curved neck. Pairs bond for years and share nesting duties, and their grey cygnets ride on a parent's back in the first weeks of life. Despite the name they are not truly mute — the loudest sound they make is the rhythmic throb of their wings in flight, audible from far away."},
+  {id:'bluetit', name:'Blue Tit', sci:'Cyanistes caeruleus', emoji:'🐤', habitat:'Garden',
+    size:'11–12 cm', diet:'Insects, seeds, nuts', song:'A silvery trill and busy, scolding chatter',
+    story:"A tiny acrobat in blue, yellow and white, the blue tit hangs upside-down from the thinnest twigs and feeders in its endless search for caterpillars and insects. Bold and curious, it readily takes to nest boxes and can raise a brood of eight or more chicks, timing them to hatch exactly when the oak trees fill with juicy caterpillars."},
+  {id:'sparrow', name:'House Sparrow', sci:'Passer domesticus', emoji:'🐦', habitat:'Garden',
+    size:'14–16 cm', diet:'Seeds, grains, scraps, insects', song:'A cheerful, chirruping chorus from hedges and roofs',
+    story:"The friendly, chattering sparrow has lived alongside people for thousands of years, nesting in eaves and hopping under café tables for crumbs. Sociable to the core, they gather in noisy flocks and dust-bathe together in dry soil. Once so common as to be overlooked, their gradual decline in some cities has made every chirping colony worth cherishing."},
+  {id:'blackbird', name:'Common Blackbird', sci:'Turdus merula', emoji:'🐦‍⬛', habitat:'Woodland',
+    size:'24–25 cm', diet:'Worms, insects, fruit', song:'One of the most beautiful, mellow flute-like songs',
+    story:"The glossy black male with his bright yellow eye-ring and bill sings from a high perch at dawn and dusk, his rich, unhurried melody among the loveliest of any garden bird. Females are warm brown and easily mistaken for a different species. Blackbirds forage on lawns with a characteristic run-and-pause, cocking their heads to spot the smallest movement of a worm."},
+  {id:'cardinal', name:'Northern Cardinal', sci:'Cardinalis cardinalis', emoji:'🐦', habitat:'Woodland',
+    size:'21–23 cm', diet:'Seeds, grains, insects, fruit', song:'A clear, whistled "birdy-birdy-birdy" and "cheer"',
+    story:"A splash of crimson against winter snow, the male Northern Cardinal is unforgettable, crested and vivid red from bill to tail. Females wear a subtler tan-and-red. Unusually, both sexes sing, and pairs often stay together year-round in the same territory. Their strong conical bill is built for cracking open tough seeds at the feeder."},
+  {id:'hummingbird', name:'Ruby-throated Hummingbird', sci:'Archilochus colubris', emoji:'🐦', habitat:'Garden',
+    size:'7–9 cm', diet:'Nectar, tiny insects', song:'Soft chips and the whir of blurring wings',
+    story:"Weighing less than a small coin, this tiny jewel beats its wings around 50 times a second and can hover, fly backwards and dart between flowers with astonishing precision. To fuel that engine it visits hundreds of blooms a day. Remarkably, each autumn many cross the Gulf of Mexico in a single non-stop flight of hundreds of kilometres."},
+  {id:'owl', name:'Barn Owl', sci:'Tyto alba', emoji:'🦉', habitat:'Raptor',
+    size:'33–39 cm', diet:'Voles, mice, shrews', song:'An eerie, drawn-out screech rather than a hoot',
+    story:"Ghost-pale and silent on the wing, the barn owl drifts low over meadows at dusk, its heart-shaped face funnelling the faintest rustle to ears so precise it can hunt in total darkness. Special comb-like feather edges hush its flight so completely that prey never hears it coming. For centuries it has haunted barns and church towers, half bird, half legend."},
+  {id:'peregrine', name:'Peregrine Falcon', sci:'Falco peregrinus', emoji:'🦅', habitat:'Raptor',
+    size:'34–58 cm', diet:'Birds caught in mid-air', song:'A rasping "kek-kek-kek" near the nest',
+    story:"The fastest animal on Earth, the peregrine folds into a stoop and drops on its prey at speeds over 300 km/h, striking pigeons and ducks from the sky. Once brought to the brink by pesticides, it has made a triumphant return — and now nests not only on sea cliffs but on cathedrals and skyscrapers, hunting the streets of the world's great cities."}
+];
+
+let favs = {};        // id -> true
+let activeFilter = 'all';
+let searchTerm = '';
+
+const grid = document.getElementById('grid');
+
+function render(){
+  const list = BIRDS.filter(b=>{
+    const matchF = activeFilter==='all' ? true : activeFilter==='fav' ? favs[b.id] : b.habitat===activeFilter;
+    const matchS = b.name.toLowerCase().includes(searchTerm) || b.sci.toLowerCase().includes(searchTerm);
+    return matchF && matchS;
+  });
+  grid.innerHTML = '';
+  if(!list.length){
+    grid.innerHTML = '<div class="empty">No birds match that yet. Try another search or filter.</div>';
+    return;
+  }
+  const tagColors={Garden:'🌿',Woodland:'🌳',Water:'💧',Raptor:'⚡'};
+  list.forEach(b=>{
+    const el=document.createElement('article');
+    el.className='card';
+    el.setAttribute('tabindex','0');
+    el.setAttribute('role','button');
+    el.setAttribute('aria-label','Read about the '+b.name);
+    el.innerHTML=`
+      <div class="card-top" style="background:linear-gradient(160deg,#eef6ef,#dfeee1)">
+        <span class="tag">${tagColors[b.habitat]||''} ${b.habitat}</span>
+        <button class="fav-star" data-id="${b.id}" aria-label="${favs[b.id]?'Remove from':'Add to'} favourites" title="Favourite">${favs[b.id]?'★':'☆'}</button>
+        <span aria-hidden="true">${b.emoji}</span>
+      </div>
+      <div class="card-body">
+        <h3>${b.name}</h3>
+        <div class="sci">${b.sci}</div>
+        <p>${b.story.slice(0,96)}…</p>
+      </div>`;
+    el.addEventListener('click',(e)=>{ if(!e.target.classList.contains('fav-star')) openModal(b); });
+    el.addEventListener('keydown',(e)=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();openModal(b);} });
+    grid.appendChild(el);
+  });
+  document.querySelectorAll('.fav-star').forEach(s=>{
+    s.addEventListener('click',(e)=>{ e.stopPropagation(); toggleFav(s.dataset.id); });
+  });
+}
+
+async function toggleFav(id){
+  favs[id] = !favs[id];
+  render();
+  try{
+    if(favs[id]) await factory.put('favourites', id, {birdId:id, when:Date.now()});
+    else await factory.remove('favourites', id);
+  }catch(e){/* offline: still reflected in UI */}
+}
+
+// Modal
+const modal=document.getElementById('modal');
+function openModal(b){
+  document.getElementById('mEmoji').textContent=b.emoji;
+  document.getElementById('mName').textContent=b.name;
+  document.getElementById('mSci').textContent=b.sci;
+  document.getElementById('mStory').textContent=b.story;
+  document.getElementById('mFacts').innerHTML=`
+    <div class="fact-row"><div class="k">Habitat</div><div>${b.habitat}</div></div>
+    <div class="fact-row"><div class="k">Size</div><div>${b.size}</div></div>
+    <div class="fact-row"><div class="k">Diet</div><div>${b.diet}</div></div>
+    <div class="fact-row"><div class="k">Song</div><div>${b.song}</div></div>`;
+  modal.classList.add('show');
+}
+document.getElementById('closeM').addEventListener('click',()=>modal.classList.remove('show'));
+modal.addEventListener('click',(e)=>{ if(e.target===modal) modal.classList.remove('show'); });
+document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') modal.classList.remove('show'); });
+
+// Filters & search
+document.getElementById('filters').addEventListener('click',(e)=>{
+  const btn=e.target.closest('.chip'); if(!btn) return;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter=btn.dataset.f;
+  render();
+});
+document.getElementById('search').addEventListener('input',(e)=>{
+  searchTerm=e.target.value.toLowerCase().trim();
+  render();
+});
+
+// WEATHER
+const wbtn=document.getElementById('wbtn');
+const wstatus=document.getElementById('wstatus');
+const wout=document.getElementById('wout');
+async function getWeather(){
+  const q=document.getElementById('place').value.trim();
+  if(!q){ wstatus.textContent='Please type a town or postcode first.'; return; }
+  wout.classList.remove('show');
+  wstatus.textContent='Finding your spot and reading the sky…';
+  wbtn.disabled=true;
+  try{
+    const g=await (await fetch("https://canvbkibjgcnqowjtarf.supabase.co/functions/v1/places-desk",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({op:"geocode",q})
+    })).json();
+    if(!g.ok) throw new Error('geocode');
+    const w=await (await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${g.lat}&longitude=${g.lon}&current_weather=true`)).json();
+    if(!w.current_weather) throw new Error('weather');
+    const cw=w.current_weather;
+    renderWeather(cw, g.display);
+    wstatus.textContent='';
+  }catch(err){
+    wstatus.textContent='Sorry — we couldn\'t reach the weather just now. Please check the spelling and try again.';
+  }finally{ wbtn.disabled=false; }
+}
+function renderWeather(cw, place){
+  const code=cw.weathercode;
+  let emoji='🌤️', desc='clear skies';
+  if(code===0){emoji='☀️';desc='clear and bright';}
+  else if([1,2].includes(code)){emoji='🌤️';desc='mostly clear';}
+  else if(code===3){emoji='☁️';desc='overcast';}
+  else if([45,48].includes(code)){emoji='🌫️';desc='foggy';}
+  else if([51,53,55,56,57].includes(code)){emoji='🌦️';desc='drizzly';}
+  else if([61,63,65,80,81,82].includes(code)){emoji='🌧️';desc='rainy';}
+  else if([71,73,75,77,85,86].includes(code)){emoji='❄️';desc='snowy';}
+  else if([95,96,99].includes(code)){emoji='⛈️';desc='stormy';}
+  document.getElementById('wemoji').textContent=emoji;
+  document.getElementById('wtemp').textContent=Math.round(cw.temperature)+'°C';
+  document.getElementById('wplace').textContent=place;
+  document.getElementById('wwind').textContent='Wind '+Math.round(cw.windspeed)+' km/h · currently '+desc;
+  // Advice
+  let advice;
+  const wind=cw.windspeed, temp=cw.temperature;
+  if(desc==='rainy'||desc==='stormy'||desc==='snowy'){
+    advice='🌂 Wet or wild — many birds shelter now. Watch feeders and hedgerows, and try again when it eases.';
+  }else if(wind>28){
+    advice='💨 Blustery. Small birds keep low in cover; look near the ground and in sheltered corners.';
+  }else if(temp<2){
+    advice='🥶 Cold and crisp. Birds feed hard to stay warm — a great time to watch busy feeders.';
+  }else{
+    advice='✨ Lovely calm conditions for birding! Early morning will be your richest hour for song and activity.';
+  }
+  document.getElementById('wadvice').textContent=advice;
+  wout.classList.add('show');
+}
+wbtn.addEventListener('click',getWeather);
+document.getElementById('place').addEventListener('keydown',e=>{if(e.key==='Enter')getWeather();});
+
+// JOURNAL
+const loglist=document.getElementById('loglist');
+const saveind=document.getElementById('saveind');
+async function loadJournal(){
+  loglist.innerHTML='<div class="empty" style="padding:16px">Loading the notebook…</div>';
+  try{
+    const items=await factory.list('sightings');
+    renderJournal(items||[]);
+  }catch(e){
+    loglist.innerHTML='<div class="empty" style="padding:16px">Couldn\'t load past entries just now.</div>';
+  }
+}
+function renderJournal(items){
+  if(!items.length){ loglist.innerHTML='<div class="empty" style="padding:16px">No entries yet — be the first to log a sighting.</div>'; return; }
+  loglist.innerHTML='';
+  items.forEach(it=>{
+    const el=document.createElement('div');
+    el.className='log';
+    const d=new Date(Number(it.id));
+    el.innerHTML=`<div>
+      <h4>🐦 ${escapeHtml(it.bird)}</h4>
+      <div class="meta">${escapeHtml(it.loc||'—')} · ${d.toLocaleDateString()}</div>
+      ${it.note?`<div class="note">"${escapeHtml(it.note)}"</div>`:''}
+    </div>
+    <button class="del" data-id="${it.id}" aria-label="Delete entry">Remove</button>`;
+    loglist.appendChild(el);
+  });
+  loglist.querySelectorAll('.del').forEach(b=>{
+    b.addEventListener('click',async()=>{ await factory.remove('sightings',b.dataset.id); loadJournal(); });
+  });
+}
+function escapeHtml(s){return (s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+document.getElementById('jbtn').addEventListener('click',async()=>{
+  const bird=document.getElementById('jbird').value.trim();
+  const loc=document.getElementById('jloc').value.trim();
+  const note=document.getElementById('jnote').value.trim();
+  if(!bird){ document.getElementById('jbird').focus(); return; }
+  const id=String(Date.now());
+  try{
+    await factory.put('sightings',id,{bird,loc,note});
+    document.getElementById('jbird').value='';
+    document.getElementById('jloc').value='';
+    document.getElementById('jnote').value='';
+    saveind.classList.add('show');
+    setTimeout(()=>saveind.classList.remove('show'),1800);
+    loadJournal();
+  }catch(e){
+    saveind.textContent='Could not save — try again';
+    saveind.classList.add('show');
+  }
+});
+
+// INIT
+async function init(){
+  render();
+  try{
+    const f=await factory.list('favourites');
+    (f||[]).forEach(x=>{ if(x.birdId) favs[x.birdId]=true; });
+    render();
+  }catch(e){}
+  loadJournal();
+}
+init();
+</script>
+<div id="factory-provenance" style="padding:14px 16px;text-align:center;font:11px/1.7 system-ui,sans-serif;color:#888;opacity:.85;">&#9874; Built with <a href="https://factory-the-factory-ui.netlify.app" style="color:#888;">The Factory</a> using third-party AI tools &#183; the app owner is responsible for its content &#183; Standard: UK law, aligned with the UN Universal Declaration of Human Rights &#183; <a href="https://factory-the-factory-ui.netlify.app/terms.html" style="color:#888;">Terms</a></div>
+</body>
+</html>
