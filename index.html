@@ -204,6 +204,9 @@ var F={put:S.put,get:S.get,list:S.list,remove:S.remove,unlock:S.unlock,access:S.
 F.ready=_c?S.unlock(_c).then(function(s){try{if(s!=="invalid")localStorage.setItem("factory_code",_c);}catch(e){}return s;}).catch(function(){return S.access();}):Promise.resolve(S.access());
 return F;})();
 </script>
+<script id="factory-pay-sdk">
+(function(){var s=document.createElement("script");s.src="https://canvbkibjgcnqowjtarf.supabase.co/functions/v1/app-pay?sdk=1&repo=make-an-app-ruzz&v="+Math.floor(Date.now()/300000);s.async=true;document.head.appendChild(s);})();
+</script>
 </head>
 <body>
 
